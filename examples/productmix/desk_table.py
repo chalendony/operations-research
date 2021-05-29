@@ -1,5 +1,10 @@
 from ortools.linear_solver import pywraplp
 
+"""
+Problem: Product Mix
+ 
+Since this instance has only 2x2 dimensions, we are able to deliniate each project and resource
+"""
 # declare the solver
 solver = pywraplp.Solver.CreateSolver('SCIP')
 
@@ -19,6 +24,7 @@ solver.Add(60 * x1 + 120 * x2 <= 96000)
 # machine time
 solver.Add(50 * x1 + 20 * x2 <= 48000)
 
+# objective
 solver.Maximize(700 * x1 + 900 * x2)
 
 status = solver.Solve()
